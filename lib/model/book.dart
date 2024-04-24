@@ -44,18 +44,18 @@ class Book {
       );
 
   static Book fromJson(Map<String, Object?> json) => Book(
-        id: json[NoteFields.id] as int?,
-        number: json[NoteFields.number] as int,
-        title: json[NoteFields.title] as String,
-        description: json[NoteFields.description] as String,
-        createdTime: DateTime.parse(json[NoteFields.time] as String),
+        id: json[BookFields.id] as int?,
+        number: json[BookFields.number] as int,
+        title: json[BookFields.title] as String,
+        description: json[BookFields.description] as String,
+        createdTime: DateTime.parse(json[BookFields.time] as String),
       );
 
   Map<String, Object?> toJson() => {
-        NoteFields.id: id,
-        NoteFields.title: title,
-        NoteFields.number: number,
-        NoteFields.description: description,
-        NoteFields.time: createdTime.toIso8601String(),
+        BookFields.id: id,
+        BookFields.title: title,
+        BookFields.number: number,
+        BookFields.description: description,
+        BookFields.time: createdTime.toIso8601String(),
       };
 }
