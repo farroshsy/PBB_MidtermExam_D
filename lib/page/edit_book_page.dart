@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import '../db/notes_database.dart';
-import '../model/note.dart';
-import '../widget/note_form_widget.dart';
+import '../db/books_database.dart';
+import '../model/book.dart';
+import '../widget/book_form_widget.dart';
 
-class AddEditNotePage extends StatefulWidget {
-  final Note? note;
+class AddEditBookPage extends StatefulWidget {
+  final Book? book;
 
-  const AddEditNotePage({
+  const AddEditBookPage({
     Key? key,
-    this.note,
+    this.book,
   }) : super(key: key);
 
   @override
-  State<AddEditNotePage> createState() => _AddEditNotePageState();
+  State<AddEditBookPage> createState() => _AddEditBookPageState();
 }
 
-class _AddEditNotePageState extends State<AddEditNotePage> {
+class _AddEditBookPageState extends State<AddEditBookPage> {
   final _formKey = GlobalKey<FormState>();
   late int number;
   late String title;
@@ -25,9 +25,9 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
   void initState() {
     super.initState();
 
-    number = widget.note?.number ?? 0;
-    title = widget.note?.title ?? '';
-    description = widget.note?.description ?? '';
+    number = widget.book?.number ?? 0;
+    title = widget.book?.title ?? '';
+    description = widget.book?.description ?? '';
   }
 
   @override
@@ -37,7 +37,7 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
         ),
         body: Form(
           key: _formKey,
-          child: NoteFormWidget(
+          child: BookFormWidget(
             isImportant: isImportant,
             number: number,
             title: title,
@@ -60,47 +60,47 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
           backgroundColor: isFormValid ? Theme.of(context).colorScheme.primary : Colors.grey.shade700,
           elevation: 0,
         ),
-        onPressed: isFormValid ? addOrUpdateNote : null,
+        onPressed: isFormValid ? addOrUpdateBook : null,
         child: const Text('Save'),
       ),
     );
   }
 
-  void addOrUpdateNote() async {
+  void addOrUpdateBook() async {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
-      final isUpdating = widget.note != null;
+      final isUpdating = widget.book != null;
 
       if (isUpdating) {
-        await updateNote();
+        await updateBook();
       } else {
-        await addNote();
+        await addBook();
       }
 
       Navigator.of(context).pop();
     }
   }
 
-  Future updateNote() async {
-    final note = widget.note!.copy(
+  Future updateBook() async {
+    final book = widget.book!.copy(
       isImportant: isImportant,
       number: number,
       title: title,
       description: description,
     );
 
-    await NotesDatabase.instance.update(note);
+    await BooksDatabase.instance.update(book);
   }
 
-  Future addNote() async {
-    final note = Note(
+  Future addBook() async {
+    final book = Book(
       title: title,
       number: number,
       description: description,
       createdTime: DateTime.now(),
     );
 
-    await NotesDatabase.instance.create(note);
+    await BooksDatabase.instance.create(book);
   }
 }

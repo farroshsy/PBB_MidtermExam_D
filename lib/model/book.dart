@@ -1,7 +1,7 @@
-final String tableNotes = 'notes';
+final String tableBooks = 'books';
 
-class NoteFields {
-  static final List<String> values = [
+class BookFields {
+  static final ListString values = [
     /// Add all fields
     id, number, title, description, time
   ];
@@ -13,14 +13,14 @@ class NoteFields {
   static final String time = 'time';
 }
 
-class Note {
+class Book {
   final int? id;
   final int number;
   final String title;
   final String description;
   final DateTime createdTime;
 
-  const Note({
+  const Book({
     this.id,
     required this.number,
     required this.title,
@@ -28,14 +28,14 @@ class Note {
     required this.createdTime,
   });
 
-  Note copy({
+  Book copy({
     int? id,
     int? number,
     String? title,
     String? description,
     DateTime? createdTime,
   }) =>
-      Note(
+      Book(
         id: id ?? this.id,
         number: number ?? this.number,
         title: title ?? this.title,
@@ -43,7 +43,7 @@ class Note {
         createdTime: createdTime ?? this.createdTime,
       );
 
-  static Note fromJson(Map<String, Object?> json) => Note(
+  static Book fromJson(Map<String, Object?> json) => Book(
         id: json[NoteFields.id] as int?,
         number: json[NoteFields.number] as int,
         title: json[NoteFields.title] as String,

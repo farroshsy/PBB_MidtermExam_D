@@ -32,7 +32,6 @@ class BooksDatabase {
     await db.execute('''
 CREATE TABLE $tableBooks( 
   ${BooksFields.id} $idType, 
-  ${BooksFields.isImportant} $boolType,
   ${BooksFields.number} $integerType,
   ${BooksFields.title} $textType,
   ${BooksFields.description} $textType,
