@@ -75,7 +75,7 @@ class _MainAppState extends State<MainApp> {
       theme: _buildLightTheme(),
       darkTheme: _buildDarkTheme(),
       themeMode: _themeMode,
-      home: NotesPage(toggleTheme: _toggleTheme),
+      home: BooksPage(toggleTheme: _toggleTheme),
     );
   }
 }
