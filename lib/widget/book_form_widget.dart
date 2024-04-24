@@ -65,11 +65,11 @@ class NoteFormWidget extends StatelessWidget {
         ),
         decoration: InputDecoration(
           border: InputBorder.none,
-          hintText: 'Title',
+          hintText: 'Book Title',
           hintStyle: Theme.of(context).inputDecorationTheme.hintStyle,
         ),
         validator: (title) =>
-            title != null && title.isEmpty ? 'The title cannot be empty' : null,
+            title != null && title.isEmpty ? 'The Book title cannot be empty' : null,
         onChanged: onChangedTitle,
       );
 
@@ -83,7 +83,7 @@ class NoteFormWidget extends StatelessWidget {
           hintStyle: Theme.of(context).inputDecorationTheme.hintStyle,
         ),
         validator: (description) =>
-            description != null && description.isEmpty ? 'The description cannot be empty' : null,
+            description != null && description.isEmpty ? 'Book description cannot be empty' : null,
         onChanged: onChangedDescription,
       );
 }

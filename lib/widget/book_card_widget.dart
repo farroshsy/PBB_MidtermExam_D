@@ -4,11 +4,10 @@ import '../model/book.dart';
 
 final _lightColors = [
   Colors.amber.shade300,
-  Colors.lightGreen.shade300,
-  Colors.lightBlue.shade300,
   Colors.orange.shade300,
-  Colors.pinkAccent.shade100,
-  Colors.tealAccent.shade100
+  Colors.lightGreen.shade300,
+  Colors.lightBlue.shade300
+
 ];
 
 class BookCardWidget extends StatelessWidget {
@@ -23,7 +22,6 @@ class BookCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// Pick colors from the accent colors based on index
     final color = _lightColors[index % _lightColors.length];
     final time = DateFormat.yMMMd().format(book.createdTime);
     final minHeight = getMinHeight(index);
